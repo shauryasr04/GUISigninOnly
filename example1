@@ -1,0 +1,76 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+public class GUILoginOnly implements ActionListener{
+	private static JLabel label;
+	private static JTextField userText;
+	private static JLabel pLabel;
+	private static JPasswordField password;
+	private static JButton button;
+	private static JLabel success;
+
+	public static void main(String[] args) {
+		JFrame frame = new JFrame();
+		JPanel panel = new JPanel();
+		
+		frame.setSize(350,200);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(panel);
+		panel.setLayout(null);
+		
+		label = new JLabel("user");
+		label.setBounds(10,20,80,25);
+		panel.add(label);
+	
+		userText = new JTextField(20);
+		userText.setBounds(100, 20, 165, 25);
+		panel.add(userText);
+		
+		
+		pLabel = new JLabel("Password");
+		pLabel.setBounds(10,50,80,25);
+		panel.add(pLabel);
+		
+		
+		password = new JPasswordField(20);
+		password.setBounds(100,50,165,25);
+		panel.add(password);
+		
+		button = new JButton("Login");
+		button.setBounds(10,80,80,25);
+		button.addActionListener(new GUILoginOnly());
+		panel.add(button);
+		
+		success = new JLabel("");
+		success.setBounds(10,110,300,25);
+		panel.add(success);
+		
+		
+		frame.setVisible(true);
+		
+	}
+	@Override
+	public void actionPerformed (ActionEvent e) {
+		String y = "";
+		String user = userText.getText();
+		char[] password1 = password.getPassword();
+		if(user.equals("Shaurya")) {
+			for(int i = 0; i<password1.length;i++) {
+				y+=password1[i];
+			}
+			if(y.equals("s")) {
+				System.out.println("Excellent Login");
+			}else {
+				System.out.println("Try Again (404 error)");
+			}
+	}
+
+}
+}
